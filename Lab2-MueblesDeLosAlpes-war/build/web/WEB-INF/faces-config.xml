@@ -5,7 +5,6 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{loginBean.login}</from-action>
             <from-outcome>catalogo</from-outcome>
@@ -16,7 +15,6 @@
             <from-outcome>compras</from-outcome>
             <to-view-id>/compras.xhtml</to-view-id>
         </navigation-case>
-        <from-view-id>/compras.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{comprasBean.agregar}</from-action>
             <from-outcome>comprar</from-outcome>
@@ -24,7 +22,7 @@
         </navigation-case>
         <navigation-case>
             <from-action>#{comprasBean.regresar}</from-action>
-            <from-outcome>regresar</from-outcome>
+            <from-outcome>seleccion</from-outcome>
             <to-view-id>/compras.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

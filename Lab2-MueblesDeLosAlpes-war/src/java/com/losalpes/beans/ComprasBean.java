@@ -6,7 +6,6 @@
 package com.losalpes.beans;
 
 import com.losalpes.bos.Mueble;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,71 +16,88 @@ import javax.faces.bean.ManagedBean;
  *
  * @author WTMOCHOA
  */
-@ManagedBean(eager = true)
-@Named(value = "comprasBean")
+@ManagedBean
 @SessionScoped
 public class ComprasBean implements Serializable {
 
-    List<Mueble> listaMueblesCompra;
-    List<Mueble> listaMueblesSeleccionadas;
-    Double total;
+    private static List<Mueble> listaMueblesSeleccionadas;
+    private Double total;
 
     /**
      * Creates a new instance of ComprasBean
      */
     public ComprasBean() {
-        listaMueblesCompra = new ArrayList<>();
-        listaMueblesSeleccionadas = new ArrayList<>();
-        total = 0D;
+        
+        if(listaMueblesSeleccionadas == null)
+            reiniciarAtributos();
     }
 
+    /**
+     * Procesa la compra de los muebles seleccionados
+     * @return 
+     */
     public String comprar() {
         return "";
     }
 
+    /**
+     * Calcula el valor total de la compra
+     * @return 
+     */
     public String agregar() {
-        boolean agregado;
-
-        for (Mueble muebleSel : listaMueblesSeleccionadas) {
-            agregado = false;
-            for (Mueble muebleCom : listaMueblesCompra) {
-                if (muebleSel.getReferencia().equals(muebleCom.getReferencia())) {
-                    agregado = true;
-                    break;
-                }
-            }
-            if (!agregado) {
-                listaMueblesCompra.add(muebleSel);
-                total += muebleSel.getPrecio();
-            }
-        }
+        total = 0D;
+        
+        listaMueblesSeleccionadas.stream().forEach((muebleSel) -> {
+            total += muebleSel.getPrecio();
+        });
         return "comprar";
     }
     
+    /**
+     * Retorna a la pagina de seleccion de muebles
+     * @return 
+     */
     public String regresar(){
+        System.out.println("Reiniciando Atributos");
         return "seleccion";
     }
-
-    public List<Mueble> getListaMueblesCompra() {
-        return listaMueblesCompra;
+    
+    /**
+     * Crea una nueva instancia a los atributos
+     */
+    private void reiniciarAtributos(){
+        listaMueblesSeleccionadas = new ArrayList<>();
+        total = 0D;
     }
 
-    public void setListaMueblesCompra(List<Mueble> listaMueblesCompra) {
-        this.listaMueblesCompra = listaMueblesCompra;
-    }
-
+    /**
+     * Retorna la lista de muebles seleccionados
+     * @return 
+     */
     public List<Mueble> getListaMueblesSeleccionadas() {
         return listaMueblesSeleccionadas;
     }
 
+    /**
+     * Establece la lista de muebles seleccionados
+     * @param listaMueblesSeleccionadas 
+     */
     public void setListaMueblesSeleccionadas(List<Mueble> listaMueblesSeleccionadas) {
-        this.listaMueblesSeleccionadas = listaMueblesSeleccionadas;
+        ComprasBean.listaMueblesSeleccionadas = listaMueblesSeleccionadas;
     }
 
+    /**
+     * Retorna el valor total de los muebles seleccionados
+     * @return 
+     */
     public Double getTotal() {
         return total;
     }
 
+    /**
+     * Establece el valor total de los muebles seleccionados
+     * @param total 
+     */
     public void setTotal(Double total) {
         this.total = total;
     }

@@ -14,11 +14,11 @@
         
         <h:form>
             
-                
+                <f:view contentType="text/html" />
                 <!-- Se crea una tabla donde se presentan los muebles del sistema -->
                 <p:dataTable
                     id="data"
-                    value="#{comprasBean.listaMueblesCompra}"
+                    value="#{comprasBean.listaMueblesSeleccionadas}"
                     var="file"
                     scrollable="false"
                     scrollHeight="100px"
@@ -30,7 +30,6 @@
                     <f:facet name="header">
                         Muebles disponibles
                     </f:facet>     
-                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                     
                     <p:column headerText="Referencia" sortBy="#{file.referencia}">
                         <h:outputText value="#{file.referencia}" />
@@ -56,7 +55,7 @@
                         <h:outputText value="Total " /> 
                         <h:outputText value="#{comprasBean.total}" />&nbsp;
                         <h:commandButton value="Comprar" action="#{comprasBean.comprar}" />
-                        <h:commandButton value="Continuar Compra" action="#{comprasBean.regresar()}" />
+                        <h:commandButton value="Continuar Compra" action="#{comprasBean.regresar}" />
                     </f:facet>
                 </p:dataTable>
 
