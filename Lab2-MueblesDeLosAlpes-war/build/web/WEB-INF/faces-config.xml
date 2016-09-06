@@ -7,13 +7,8 @@
     <navigation-rule>
         <navigation-case>
             <from-action>#{loginBean.login}</from-action>
-            <from-outcome>catalogo</from-outcome>
-            <to-view-id>/catalogo.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{loginBean.login}</from-action>
-            <from-outcome>compras</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <from-outcome>menuAdmin</from-outcome>
+            <to-view-id>/menuAdmin.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{comprasBean.agregar}</from-action>
@@ -34,6 +29,21 @@
             <from-action>#{comprasBean.comprar}</from-action>
             <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{adminMenuBean.irAdminClientes}</from-action>
+            <from-outcome>adminclientes</from-outcome>
+            <to-view-id>/adminclientes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{adminMenuBean.irAdminMuebles}</from-action>
+            <from-outcome>catalogo</from-outcome>
+            <to-view-id>/catalogo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{adminMenuBean.irReportes}</from-action>
+            <from-outcome>reportes</from-outcome>
+            <to-view-id>/reportes.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 

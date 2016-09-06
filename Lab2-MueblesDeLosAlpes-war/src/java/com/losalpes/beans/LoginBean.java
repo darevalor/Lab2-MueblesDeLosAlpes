@@ -87,7 +87,7 @@ public class LoginBean
             user = servicio.login(usuario, contraseña);
             if (user.getTipo() == TipoUsuario.ADMINISTRADOR)
             {
-                return "catalogo";
+                return "menuAdmin";
             }
             else
             {
