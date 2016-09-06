@@ -28,7 +28,7 @@
                     rows="5">
 
                     <f:facet name="header">
-                        Muebles disponibles
+                        Muebles seleccionados
                     </f:facet>     
                     
                     <p:column headerText="Referencia" sortBy="#{file.referencia}">
@@ -52,10 +52,10 @@
                     </p:column>
                     
                     <f:facet name="footer">
-                        <h:outputText value="Total " /> 
-                        <h:outputText value="#{comprasBean.total}" />&nbsp;
-                        <h:commandButton value="Comprar" action="#{comprasBean.comprar}" />
-                        <h:commandButton value="Continuar Compra" action="#{comprasBean.regresar}" />
+                        <p:outputLabel value="Total: " /> 
+                        <p:outputLabel value="#{comprasBean.total} " />
+                        <p:commandButton value="Comprar" action="#{comprasBean.comprar}" />
+                        <p:commandButton value="Continuar Compra" action="#{comprasBean.regresar}" />
                     </f:facet>
                 </p:dataTable>
 

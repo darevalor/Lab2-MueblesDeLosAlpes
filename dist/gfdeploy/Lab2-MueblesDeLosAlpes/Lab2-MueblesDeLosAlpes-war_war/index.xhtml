@@ -13,8 +13,10 @@
     <ui:define name="body">
         
         <h:form>
-            <p:panel >
-                <p:commandLink value="Ingresar" action="#{comprasBean.irALogin}" ajax="true" rendered="#{loginBean.user != null}"/>
+            <p:panel style="text-align: right">
+                <p:commandLink value="Ingresar" action="#{comprasBean.irALogin}" ajax="true" rendered="#{loginBean.user == null}"/>
+                <p:outputLabel value="Bienvenido " rendered="#{loginBean.user != null}"/>
+                <p:outputLabel value="#{loginBean.user.nombre}" rendered="#{loginBean.user != null}"/>
             </p:panel>
                 <f:view contentType="text/html" />
                 <!-- Se crea una tabla donde se presentan los muebles del sistema -->
