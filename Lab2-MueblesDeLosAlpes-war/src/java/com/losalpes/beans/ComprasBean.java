@@ -6,11 +6,13 @@
 package com.losalpes.beans;
 
 import com.losalpes.bos.Mueble;
+import com.losalpes.bos.Usuario;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 /**
  *
@@ -60,6 +62,10 @@ public class ComprasBean implements Serializable {
     public String regresar(){
         System.out.println("Reiniciando Atributos");
         return "seleccion";
+    }
+    
+    public String irALogin(){
+        return "login";
     }
     
     /**

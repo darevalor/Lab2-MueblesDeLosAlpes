@@ -52,6 +52,11 @@ public class LoginBean
      * Determina si existe error o no
      */
     private boolean error;
+    
+    /**
+     * Usuario de sesion
+     */
+    private Usuario user;
 
     //-----------------------------------------------------------
     // Constructor
@@ -79,7 +84,7 @@ public class LoginBean
        
         try
         {
-            Usuario user = servicio.login(usuario, contraseña);
+            user = servicio.login(usuario, contraseña);
             if (user.getTipo() == TipoUsuario.ADMINISTRADOR)
             {
                 return "catalogo";
@@ -163,4 +168,14 @@ public class LoginBean
     {
         error=false;
     }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+    
+    
 }

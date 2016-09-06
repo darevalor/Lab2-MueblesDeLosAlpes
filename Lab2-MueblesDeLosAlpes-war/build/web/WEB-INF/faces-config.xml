@@ -13,7 +13,7 @@
         <navigation-case>
             <from-action>#{loginBean.login}</from-action>
             <from-outcome>compras</from-outcome>
-            <to-view-id>/compras.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{comprasBean.agregar}</from-action>
@@ -23,7 +23,12 @@
         <navigation-case>
             <from-action>#{comprasBean.regresar}</from-action>
             <from-outcome>seleccion</from-outcome>
-            <to-view-id>/compras.xhtml</to-view-id>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{comprasBean.irALogin}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
