@@ -6,7 +6,6 @@
 package com.losalpes.beans;
 
 import com.losalpes.bos.Mueble;
-import com.losalpes.bos.Usuario;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +23,8 @@ public class ComprasBean implements Serializable {
 
     private static List<Mueble> listaMueblesSeleccionadas;
     private Double total;
+    @ManagedProperty(value="#{loginBean}")
+    private LoginBean loginBean;
 
     /**
      * Creates a new instance of ComprasBean
@@ -39,7 +40,11 @@ public class ComprasBean implements Serializable {
      * @return 
      */
     public String comprar() {
-        return "";
+        if(loginBean.getUser() == null){
+            return "login";
+        }else{
+            return "";
+        }
     }
 
     /**
@@ -106,6 +111,14 @@ public class ComprasBean implements Serializable {
      */
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
     }
 
 }
