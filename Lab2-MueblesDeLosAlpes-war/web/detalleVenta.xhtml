@@ -11,53 +11,54 @@
 
     <ui:param name="titulo" value="Catálogo de muebles" />
     <ui:define name="body">
-        
-        <h:form>
-            
-                <f:view contentType="text/html" />
-                <!-- Se crea una tabla donde se presentan los muebles del sistema -->
-                <p:dataTable
-                    id="data"
-                    value="#{comprasBean.listaMueblesSeleccionadas}"
-                    var="file"
-                    scrollable="false"
-                    scrollHeight="100px"
-                    paginator="true"
-                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                    resizableColumns="true"
-                    rows="5">
 
-                    <f:facet name="header">
-                        Muebles seleccionados
-                    </f:facet>     
-                    
-                    <p:column headerText="Referencia" sortBy="#{file.referencia}">
-                        <h:outputText value="#{file.referencia}" />
-                    </p:column>
-                    
-                    <p:column headerText="Nombre">
-                        <h:outputText value="#{file.nombre}" />
-                    </p:column>
-                    
-                    <p:column headerText="Descripción">
-                        <h:outputText value="#{file.descripcion}" />
-                    </p:column>
-                    
-                    <p:column headerText="Tipo">
-                        <h:outputText value="#{file.tipo}" />
-                    </p:column>
-                    
-                    <p:column headerText="Precio">
-                        <h:outputText value="#{file.precio}" />
-                    </p:column>
-                    
-                    <f:facet name="footer">
-                        <p:outputLabel value="Total: " /> 
-                        <p:outputLabel value="#{comprasBean.total} " />
-                        <p:commandButton value="Comprar" action="#{comprasBean.comprar}" />
-                        <p:commandButton value="Continuar Compra" action="#{comprasBean.regresar}" />
-                    </f:facet>
-                </p:dataTable>
+        <h:form>
+
+            <f:view contentType="text/html" />
+            <!-- Se crea una tabla donde se presentan los muebles del sistema -->
+            <p:panelGrid id="detalleCompra" columns="2">
+                <f:facet name="header">
+                    Descripción de la Venta
+                </f:facet>
+
+                <p:column>Referencia</p:column>
+                <p:column>3941-12615159</p:column>
+
+                <p:column>Valor</p:column>
+                <p:column><p:outputLabel value="#{comprasBean.total}"/></p:column>
+
+                <p:column>Descripcion</p:column>
+                <p:column>
+                    <p:dataTable
+                        id="data"
+                        value="#{comprasBean.listaMueblesSeleccionadas}"
+                        var="file"
+                        scrollable="false"
+                        scrollHeight="100px"
+                        paginator="true"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        resizableColumns="true"
+                        rows="5">
+
+                        <f:facet name="header">
+                            Muebles seleccionados
+                        </f:facet>     
+
+                        <p:column headerText="Referencia" sortBy="#{file.referencia}">
+                            <h:outputText value="#{file.referencia}" />
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{file.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="Precio">
+                            <h:outputText value="#{file.precio}" />
+                        </p:column>
+                    </p:dataTable>
+
+                </p:column>
+            </p:panelGrid>
 
         </h:form>
 

@@ -16,19 +16,22 @@ import com.losalpes.bos.Cliente;
 import com.losalpes.bos.TipoDocumento;
 import com.losalpes.servicios.IServicioClientes;
 import com.losalpes.servicios.ServicioClientesMock;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.SelectEvent;
 
 
 /**
- * Managed bean encargado del catálogo de muebles en el sistema
+ * Managed bean encargado de los Clientes en el sistema
  * 
  */
 @ManagedBean
 @SessionScoped
-public class AdminClientesBean
+public class AdminClientesBean implements Serializable
 {
 
     //-----------------------------------------------------------
@@ -45,9 +48,7 @@ public class AdminClientesBean
      */
     private IServicioClientes adminClientes;
     
-    private Cliente ClienteSeleccionado;
-
-    
+    private Cliente ClienteSeleccionado;    
 
     //-----------------------------------------------------------
     // Constructor
@@ -111,7 +112,9 @@ public class AdminClientesBean
      */
     public void eliminarCliente()
     {
+        if(ClienteSeleccionado != null){
         adminClientes.eliminarCliente(ClienteSeleccionado);
+        }
     }
     
     /**
@@ -119,11 +122,12 @@ public class AdminClientesBean
      */
     public void editarCliente(){
         adminClientes.editarCliente(Cliente);
+        agregarCliente();
     }
 
     /**
      * Devuelve los tipos de Documentos
-     * @return sitems Tipos de Documentos en el sistema
+     * @return SelectItem Tipos de Documentos en el sistema
      */
     public SelectItem[] getTiposDocumentos()
     {
@@ -143,5 +147,10 @@ public class AdminClientesBean
 
     public void setClienteSeleccionado(Cliente ClienteSeleccionado) {
         this.ClienteSeleccionado = ClienteSeleccionado;
+    }
+
+    public void onRowSelect(SelectEvent event) {
+        this.ClienteSeleccionado = ((Cliente)event.getObject());
+        Cliente = ClienteSeleccionado;
     }    
 }

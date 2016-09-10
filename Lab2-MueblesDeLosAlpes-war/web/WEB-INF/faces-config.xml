@@ -11,6 +11,21 @@
             <to-view-id>/menuAdmin.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-action>#{loginBean.login}</from-action>
+            <from-outcome>compras</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.cerrarSesion}</from-action>
+            <from-outcome>inicio</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{loginBean.irALogin}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-action>#{comprasBean.agregar}</from-action>
             <from-outcome>comprar</from-outcome>
             <to-view-id>/comprasSeleccion.xhtml</to-view-id>
@@ -21,14 +36,14 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{comprasBean.irALogin}</from-action>
+            <from-action>#{comprasBean.comprar}</from-action>
             <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{comprasBean.comprar}</from-action>
-            <from-outcome>login</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
+            <from-outcome>pagar</from-outcome>
+            <to-view-id>/detalleVenta.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{adminMenuBean.irAdminClientes}</from-action>
@@ -42,8 +57,13 @@
         </navigation-case>
         <navigation-case>
             <from-action>#{adminMenuBean.irReportes}</from-action>
-            <from-outcome>reportes</from-outcome>
-            <to-view-id>/reportes.xhtml</to-view-id>
+            <from-outcome>reports</from-outcome>
+            <to-view-id>/ventasInicio.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{ventasBean.obtenerVentas}</from-action>
+            <from-outcome>ventas</from-outcome>
+            <to-view-id>/reporteVentas.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <h:outputStylesheet name="mueblesheet.css"/>
@@ -19,7 +20,12 @@
                 <tr>
                     <td align="center">                          
                         <h:graphicImage value="./resources/img/template/header.png" />
-                        
+                        <p:panel style="text-align: right">
+                            <p:commandLink value="Ingresar" action="#{loginBean.irALogin}" ajax="true" rendered="#{loginBean.user == null}"/>
+                            <p:outputLabel value="Bienvenido " rendered="#{loginBean.user != null}"/>
+                            <p:outputLabel value="#{loginBean.user.nombre} " rendered="#{loginBean.user != null}"/>
+                            <p:commandLink value="Cerrar Sesión" action="#{loginBean.cerrarSesion}" ajax="true" rendered="#{loginBean.user != null}"/>
+                        </p:panel>
                         <center>
                             <ui:insert name="body" />
                         </center>           

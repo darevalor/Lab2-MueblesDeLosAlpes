@@ -15,6 +15,7 @@ package com.losalpes.servicios;
 import com.losalpes.bos.Cliente;
 import com.losalpes.bos.TipoDocumento;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -66,7 +67,19 @@ public class ServicioClientesMock implements IServicioClientes
      */
     @Override
     public void agregarCliente(Cliente cliente) {
-        clientes.add(cliente);
+        boolean bolExiste = true;
+
+        Iterator<Cliente> it = clientes.iterator();
+        while (it.hasNext()) {
+            Cliente user = it.next();
+            if (cliente.getNumeroDocumento() == user.getNumeroDocumento()) {
+                bolExiste = false;
+            }
+        }
+
+        if (bolExiste) {
+            clientes.add(cliente);
+        }
     }
 
     /**
@@ -84,8 +97,14 @@ public class ServicioClientesMock implements IServicioClientes
      */
     @Override
     public void editarCliente(Cliente cliente) {
-        eliminarCliente(cliente);
-        agregarCliente(cliente);
+
+        Iterator<Cliente> it = clientes.iterator();
+        while (it.hasNext()) {
+            Cliente user = it.next();
+            if (cliente.getNumeroDocumento() == user.getNumeroDocumento()) {
+                it.remove();
+            }
+        }
     }
 
     /**

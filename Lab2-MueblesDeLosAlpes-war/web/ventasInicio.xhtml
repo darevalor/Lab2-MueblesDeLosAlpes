@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : catalogo
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="titulo" value="Ventas" />
+    <ui:define name="body">
+
+        <h:form>
+
+            <f:view contentType="text/html" />
+            <!-- Se crea una tabla donde se presentan los muebles del sistema -->
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    Rango de Fechas
+                </f:facet>
+
+                <p:column>
+                    <p:outputLabel for="desde" value="Desde: " />
+                    <p:calendar id="desde" value="#{ventasBean.fechaDesde}" showOn="button" />
+                </p:column>
+                
+                <p:column>
+                    <p:outputLabel for="hasta" value="Hasta: " />
+                    <p:calendar id="hasta" value="#{ventasBean.fechaHasta}" showOn="button" />
+                </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton value="Agregar" action="#{ventasBean.obtenerVentas}" ajax="true"/>
+                </f:facet>
+            </p:panelGrid>
+            
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

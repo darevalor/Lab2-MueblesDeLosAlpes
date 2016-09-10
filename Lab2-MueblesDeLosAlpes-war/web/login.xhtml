@@ -6,7 +6,8 @@
 <ui:composition template="/main-template.xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:param name="titulo" value="Control de Acceso" />
     <ui:define name="body">
@@ -41,7 +42,7 @@
                     </h:inputSecret>
                     <h:message id="pwMsg" for="TxtPw" styleClass="error"/>
                     
-                    <h:commandButton value="Ingresar" action="#{loginBean.login}" type="submit" />
+                    <p:commandButton value="Ingresar" action="#{loginBean.login}" />
                 </h:panelGrid>
                 
             </h:panelGroup>

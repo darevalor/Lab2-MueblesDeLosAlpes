@@ -9,7 +9,6 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
 
-    <ui:param name="titulo" value="Catálogo de muebles" />
     <ui:define name="body">
         
         <h:form>
@@ -18,10 +17,8 @@
                 <!-- Se crea una tabla donde se presentan los muebles del sistema -->
                 <p:dataTable
                     id="data"
-                    value="#{catalogoBean.muebles}"
-                    selection="#{comprasBean.listaMueblesSeleccionadas}"
-                    rowKey="#{file.referencia}"
-                    var="file"
+                    value="#{ventasBean.ventas}"
+                    var="venta"
                     scrollable="false"
                     scrollHeight="100px"
                     paginator="true"
@@ -30,33 +27,22 @@
                     rows="5">
 
                     <f:facet name="header">
-                        Muebles disponibles
+                        Reporte de ventas
                     </f:facet>     
-                    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                     
-                    <p:column headerText="Referencia" sortBy="#{file.referencia}">
-                        <h:outputText value="#{file.referencia}" />
+                    <p:column headerText="Fecha" sortBy="#{venta.fecha}">
+                        <h:outputText value="#{venta.fecha}" />
                     </p:column>
                     
-                    <p:column headerText="Nombre">
-                        <h:outputText value="#{file.nombre}" />
+                    <p:column headerText="Ref Mueble">
+                        <h:outputText value="#{venta.mueble.referencia}" />
                     </p:column>
                     
                     <p:column headerText="Descripción">
-                        <h:outputText value="#{file.descripcion}" />
+                        <h:outputText value="#{venta.mueble.nombre}" />
                     </p:column>
                     
-                    <p:column headerText="Tipo">
-                        <h:outputText value="#{file.tipo}" />
-                    </p:column>
                     
-                    <p:column headerText="Precio">
-                        <h:outputText value="#{file.precio}" />
-                    </p:column>
-                    
-                    <f:facet name="footer">
-                        <p:commandButton value="Agregar" action="#{comprasBean.agregar}" ajax="true"/>
-                    </f:facet>
                 </p:dataTable>
 
         </h:form>

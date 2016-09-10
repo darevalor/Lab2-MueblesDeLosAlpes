@@ -11,10 +11,10 @@
 
     <ui:param name="titulo" value="Administrador de Clientes" />
     <ui:define name="body">
-        <h:form>
+        <h:form id="panel">
 
             <!-- Panel para agregar un nuevo cliente -->
-            <h:panelGroup>
+            <h:panelGroup >
                 <h:panelGrid width="110px" columns="1">
                     <h:outputLabel for="TxtTipoDocumento"
                                      value="TipoDocumento"/>
@@ -163,11 +163,9 @@
                 
                 
                 <h:commandButton value="Agregar" action="#{adminClientesBean.agregarCliente}" />
-                <h:commandButton value="Editar" action="#{adminClientesBean.editarCliente}" />
-                <h:commandButton value="Eliminar" action="#{adminClientesBean.eliminarCliente}" />
-            </h:panelGroup>
-            
+            </h:panelGroup>            
         </h:form>
+        
         <h:form>
             
 
@@ -178,14 +176,17 @@
                     var="file"
                     rowKey="#{file.numeroDocumento}"
                     selection="#{adminClientesBean.clienteSeleccionado}"
+                    selectionMode="single"
                     scrollable="false"
                     scrollHeight="100px"
                     paginator="true"
                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                     resizableColumns="true"
-                    rows="5" >
-
-                    <p:column selectionMode="single" style="width:16px;text-align:center"/>       
+                    rows="10" >
+                    <f:facet name="header">
+                    Clientes
+                    </f:facet>
+                    <p:ajax event="rowSelect" listener="#{adminClientesBean.onRowSelect}" update="panel"/>     
                     <p:column headerText="Identificacion" sortBy="#{file.numeroDocumento}">
                         <h:outputText value="#{file.numeroDocumento}" />
                     </p:column>
@@ -206,8 +207,12 @@
                         <h:outputText value="#{file.celular}" />
                     </p:column>
                     
-                </p:dataTable>
-
+                
+                 <f:facet name="footer">
+                    <h:commandButton value="Editar" action="#{adminClientesBean.editarCliente}" />
+                    <h:commandButton value="Eliminar" action="#{adminClientesBean.eliminarCliente}" />
+                 </f:facet>
+                    </p:dataTable>
         </h:form>
 
     </ui:define>

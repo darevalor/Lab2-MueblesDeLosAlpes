@@ -40,10 +40,11 @@ public class ComprasBean implements Serializable {
      * @return 
      */
     public String comprar() {
+        agregar();
         if(loginBean.getUser() == null){
             return "login";
         }else{
-            return "";
+            return "pagar";
         }
     }
 
@@ -67,10 +68,6 @@ public class ComprasBean implements Serializable {
     public String regresar(){
         System.out.println("Reiniciando Atributos");
         return "seleccion";
-    }
-    
-    public String irALogin(){
-        return "login";
     }
     
     /**
